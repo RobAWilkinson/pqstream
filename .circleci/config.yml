@@ -61,7 +61,7 @@ jobs:
       - run: ./build
 
       - run: ./lint
-  python:
+  clients-python:
     docker:
       - image: circleci/python:3
     steps:
@@ -70,7 +70,7 @@ jobs:
       - run: sudo pip install pylint grpcio protobuf
 
       - run: pylint clients/python/example.py
-  ruby:
+  clients-ruby:
     docker:
       - image: circleci/ruby
     steps:
@@ -96,5 +96,5 @@ workflows:
       - build-and-test
       - lint
       - docker-image
-      - python
-      - ruby
+      - clients-python
+      - clients-ruby
