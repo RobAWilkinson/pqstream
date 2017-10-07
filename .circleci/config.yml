@@ -61,7 +61,6 @@ jobs:
       - run: ./build
 
       - run: ./lint
-
   python:
     docker:
       - image: circleci/python:3
@@ -71,7 +70,13 @@ jobs:
       - run: sudo pip install pylint grpcio protobuf
 
       - run: pylint clients/python/example.py
+  ruby:
+    docker:
+      - image: circleci/ruby
+    steps:
+      - checkout
 
+      - run: cd clients/ruby; make deps gem lint
   docker-image:
     docker:
       - image: gcr.io/cloud-builders/docker
@@ -92,3 +97,4 @@ workflows:
       - lint
       - docker-image
       - python
+      - ruby
