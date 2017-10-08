@@ -69,15 +69,15 @@ jobs:
 
       - restore_cache:
           keys:
-            - protobuf-{{ arch }}-{{ checksum "clients/install-protobuf" }}
-            - protobuf
+            - v1-protobuf-{{ arch }}-{{ checksum "clients/install-protobuf" }}
+            - v1-protobuf
 
       - run: cd clients; make deps
       
       - save_cache:
-          key: protobuf-{{ arch }}-{{ checksum "clients/install-protobuf" }}
+          key: v1-protobuf-{{ arch }}-{{ checksum "clients/install-protobuf" }}
           paths:
-            - /home/circleci
+            - /home/circleci/protobuf
 
       - run: cd clients/python; make deps lint
 
@@ -89,15 +89,15 @@ jobs:
 
       - restore_cache:
           keys:
-            - protobuf-{{ arch }}-{{ checksum "clients/install-protobuf" }}
-            - protobuf
+            - v1-protobuf-{{ arch }}-{{ checksum "clients/install-protobuf" }}
+            - v1-protobuf
 
       - run: cd clients; make deps
       
       - save_cache:
-          key: protobuf-{{ arch }}-{{ checksum "clients/install-protobuf" }}
+          key: v1-protobuf-{{ arch }}-{{ checksum "clients/install-protobuf" }}
           paths:
-            - /home/circleci
+            - /home/circleci/protobuf
 
 
       - run: cd clients/ruby; make deps generate gem lint
