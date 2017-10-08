@@ -67,16 +67,18 @@ jobs:
     steps:
       - checkout
 
-      - run: sudo pip install pylint grpcio protobuf
+      - run: cd clients; make deps
 
-      - run: pylint clients/python/example.py
+      - run: cd clients/python; make deps lint
   clients-ruby:
     docker:
       - image: circleci/ruby
     steps:
       - checkout
 
-      - run: cd clients/ruby; make deps gem lint
+      - run: cd clients; make deps
+
+      - run: cd clients/ruby; make deps generate gem lint
   docker-image:
     docker:
       - image: gcr.io/cloud-builders/docker

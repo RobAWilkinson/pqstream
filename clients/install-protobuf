@@ -1,0 +1,12 @@
+#!/bin/bash
+set -euo pipefail
+set -x 
+version=${PROTOBUF_VERSION:-3.4.1}
+curl -LO "https://github.com/google/protobuf/archive/v${version}.tar.gz"
+tar xvf "v${version}.tar.gz"
+cd "protobuf-${version}"
+./autogen.sh
+./configure
+make
+make install
+ldconfig
