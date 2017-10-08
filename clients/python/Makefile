@@ -1,7 +1,7 @@
 all: lint
 
 deps:
-    pip install pylint grpcio protobuf
+	pip install -r requirements.txt
 
 lint:
-    pylint clients/python/example.py
+	pylint clients/python/example.py
