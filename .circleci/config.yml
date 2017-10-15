@@ -1,4 +1,13 @@
 version: 2
+workflows:
+  version: 2
+  ci:
+    jobs:
+      - build-and-test
+      - lint
+      - docker-image
+      - python
+      - nodejs
 jobs:
   build-and-test:
     docker:
@@ -93,12 +102,3 @@ jobs:
           name: Build Image
           command: |
             docker build .
-workflows:
-  version: 2
-  ci:
-    jobs:
-      - build-and-test
-      - lint
-      - docker-image
-      - python
-      - nodejs
