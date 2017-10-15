@@ -86,9 +86,9 @@ jobs:
     steps:
       - checkout
 
-      - run: npm install -g eslint
+      - run: cd clients/node; npm install
 
-      - run: eslint clients/node/example.js
+      - run: cd clients/node; npm run lint
 
   docker-image:
     docker:
