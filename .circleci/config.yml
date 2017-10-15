@@ -71,6 +71,15 @@ jobs:
       - run: sudo pip install pylint grpcio protobuf
 
       - run: pylint clients/python/example.py
+  nodejs:
+    docker:
+      - image: node:8.0
+    steps:
+      - checkout
+
+      - run: npm install -g eslint
+
+      - run: eslint clients/node/example.js
 
   docker-image:
     docker:
@@ -92,3 +101,4 @@ workflows:
       - lint
       - docker-image
       - python
+      - nodejs
